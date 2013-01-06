@@ -46,13 +46,6 @@ PRODUCT_COPY_FILES := \
 	device/samsung/crespo/vold.fstab:system/etc/vold.fstab \
 	device/samsung/crespo/egl.cfg:system/lib/egl/egl.cfg
 
-# Init files
-PRODUCT_COPY_FILES += \
-	device/samsung/crespo/init.herring.rc:root/init.herring.rc \
-	device/samsung/crespo/init.herring.usb.rc:root/init.herring.usb.rc \
-	device/samsung/crespo/fstab.herring:root/fstab.herring \
-	device/samsung/crespo/ueventd.herring.rc:root/ueventd.herring.rc
-
 # Prebuilt kl and kcm keymaps
 PRODUCT_COPY_FILES += \
 	device/samsung/crespo/s3c-keypad.kl:system/usr/keylayout/s3c-keypad.kl \
