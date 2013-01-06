@@ -36,7 +36,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/samsung/crespo/device.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := full_crespo
-PRODUCT_DEVICE := crespo
+PRODUCT_NAME := full_smdkv210
+PRODUCT_DEVICE := smdkv210
 PRODUCT_BRAND := Android
-PRODUCT_MODEL := Full Android on Crespo
+PRODUCT_MODEL := Full Android on SMDKV210
