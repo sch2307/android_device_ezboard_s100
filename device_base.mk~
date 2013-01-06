@@ -46,6 +46,10 @@ PRODUCT_COPY_FILES := \
 	device/samsung/crespo/vold.fstab:system/etc/vold.fstab \
 	device/samsung/crespo/egl.cfg:system/lib/egl/egl.cfg
 
+#Bluetooth setup
+PRODUCT_COPY_FILES += \
+	system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf \
+
 #NVRAM setup
 PRODUCT_COPY_FILES += \
         device/samsung/crespo/nvram_net.txt:system/vendor/firmware/nvram_net.txt
