@@ -43,29 +43,20 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/crespo/overlay
 
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES := \
-	device/samsung/crespo/vold.fstab:system/etc/vold.fstab \
-	device/samsung/crespo/egl.cfg:system/lib/egl/egl.cfg
-
-#NVRAM setup
-PRODUCT_COPY_FILES += \
-        device/samsung/crespo/nvram_net.txt:system/vendor/firmware/nvram_net.txt
+	device/samsung/crespo/prebuilts/etc/vold.fstab:system/etc/vold.fstab \
+	device/samsung/crespo/prebuilts/lib/egl/egl.cfg:system/lib/egl/egl.cfg
 
 #MFC Firmware
 PRODUCT_COPY_FILES += \
-        device/samsung/crespo/samsung_mfc_fw.bin:system/vendor/firmware/samsung_mfc_fw.bin
+        device/samsung/crespo/prebuilts/vendor/firmware/samsung_mfc_fw.bin:system/vendor/firmware/samsung_mfc_fw.bin
 
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-	make_ext4fs \
-	setup_fs
-
-PRODUCT_CHARACTERISTICS := nosdcard
+PRODUCT_CHARACTERISTICS := tablet
 
 # These are the OpenMAX IL configuration files
 PRODUCT_COPY_FILES += \
 	device/samsung/crespo/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry \
-	device/samsung/crespo/media_profiles.xml:system/etc/media_profiles.xml \
-	device/samsung/crespo/media_codecs.xml:system/etc/media_codecs.xml
+	device/samsung/crespo/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml \
+	device/samsung/crespo/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml
 
 
 # These are the OpenMAX IL modules
@@ -92,8 +83,7 @@ PRODUCT_COPY_FILES += \
 
 # Libs
 PRODUCT_PACKAGES += \
-	libstagefrighthw \
-	com.android.future.usb.accessory
+	libstagefrighthw 
 
 # Input device calibration files
 PRODUCT_COPY_FILES += \
@@ -107,23 +97,13 @@ PRODUCT_COPY_FILES += \
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-	frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
 	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.opengles.version=131072
-
-# These are the hardware-specific settings that are stored in system properties.
-# Note that the only such settings should be the ones that are too low-level to
-# be reachable from resources or other mechanisms.
-PRODUCT_PROPERTY_OVERRIDES += \
-	wifi.interface=wlan0
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -136,23 +116,3 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Screen size is "normal", density is "hdpi"
 PRODUCT_AAPT_CONFIG := normal hdpi
-
-ifeq ($(TARGET_PREBUILT_WIFI_MODULE),)
-LOCAL_WIFI_MODULE := device/samsung/crespo/bcm4329.ko
-else
-LOCAL_WIFI_MODULE := $(TARGET_PREBUILT_WIFI_MODULE)
-endif
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/samsung/crespo/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-$(call inherit-product-if-exists, vendor/nxp/pn544/nxp-pn544-fw-vendor.mk)
-
-WIFI_BAND := 802_11_BG
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
