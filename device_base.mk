@@ -39,24 +39,24 @@
 # These is the hardware-specific overlay, which points to the location
 # of hardware-specific resource overrides, typically the frameworks and
 # application settings that are stored in resourced.
-DEVICE_PACKAGE_OVERLAYS := device/samsung/crespo/overlay
+DEVICE_PACKAGE_OVERLAYS := device/samsung/smdkv210/overlay
 
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES := \
-	device/samsung/crespo/prebuilts/etc/vold.fstab:system/etc/vold.fstab \
-	device/samsung/crespo/prebuilts/lib/egl/egl.cfg:system/lib/egl/egl.cfg
+	device/samsung/smdkv210/prebuilts/etc/vold.fstab:system/etc/vold.fstab \
+	device/samsung/smdkv210/prebuilts/lib/egl/egl.cfg:system/lib/egl/egl.cfg
 
 #MFC Firmware
 PRODUCT_COPY_FILES += \
-        device/samsung/crespo/prebuilts/vendor/firmware/samsung_mfc_fw.bin:system/vendor/firmware/samsung_mfc_fw.bin
+        device/samsung/smdkv210/prebuilts/vendor/firmware/samsung_mfc_fw.bin:system/vendor/firmware/samsung_mfc_fw.bin
 
-PRODUCT_CHARACTERISTICS := tablet
+PRODUCT_CHARACTERISTICS := nosdcard
 
 # These are the OpenMAX IL configuration files
 PRODUCT_COPY_FILES += \
-	device/samsung/crespo/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry \
-	device/samsung/crespo/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml \
-	device/samsung/crespo/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml
+	device/samsung/smdkv210/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry \
+	device/samsung/smdkv210/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml \
+	device/samsung/smdkv210/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml
 
 
 # These are the OpenMAX IL modules
@@ -73,13 +73,13 @@ PRODUCT_PACKAGES += \
 	hwcomposer.s5pc110
 # audio
 PRODUCT_PACKAGES += \
-	audio_policy.herring \
-	audio.primary.herring \
+	audio_policy.s5pc110 \
+	audio.primary.s5pc110 \
 	audio.a2dp.default \
 	audio.usb.default
 
 PRODUCT_COPY_FILES += \
-	device/samsung/crespo/libaudio/audio_policy.conf:system/etc/audio_policy.conf
+	device/samsung/smdkv210/libaudio/audio_policy.conf:system/etc/audio_policy.conf
 
 # Libs
 PRODUCT_PACKAGES += \
@@ -87,6 +87,7 @@ PRODUCT_PACKAGES += \
 
 # Input device calibration files
 PRODUCT_COPY_FILES += \
+	device/samsung/smdkv210/prebuilts/usr/idc/S5P_TouchScreen.idc:system/usr/idc/S5P_TouchScreen.idc
 
 # for bugmailer
 PRODUCT_PACKAGES += send_bug
