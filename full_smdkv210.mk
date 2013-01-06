@@ -28,7 +28,7 @@ PRODUCT_PACKAGES += \
 
 # This is where we'd set a backup provider if we had one
 #$(call inherit-product, device/sample/products/backup_overlay.mk)
-$(call inherit-product, device/samsung/crespo/device.mk)
+$(call inherit-product, device/samsung/smdkv210/device.mk)
 
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := full_smdkv210

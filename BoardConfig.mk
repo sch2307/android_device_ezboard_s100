@@ -17,12 +17,9 @@
 # Product-specific compile-time definitions.
 #
 
-# Use the non-open-source parts, if they're present
--include vendor/samsung/crespo/BoardConfigVendor.mk
-
 # Use the open-source board-info file if none was set by the vendor
 # config.
-TARGET_BOARD_INFO_FILE ?= device/samsung/crespo/board-info.txt
+TARGET_BOARD_INFO_FILE ?= device/samsung/smdkv210/board-info.txt
 
 # Use the parts that are common between all crespos
-include device/samsung/crespo/BoardConfigCommon.mk
+include device/samsung/smdkv210/BoardConfigCommon.mk

@@ -36,11 +36,3 @@
 
 # These are the hardware-specific features
 
-$(call inherit-product, device/samsung/crespo/device_base.mk)
-
-# See comment at the top of this file. This is where the other
-# half of the device-specific product definition file takes care
-# of the aspects that require proprietary drivers that aren't
-# commonly available
-$(call inherit-product-if-exists, vendor/samsung/crespo/device-vendor.mk)
-

@@ -1,1 +1,1 @@
-require board=herring
+require board=smdkv210
